@@ -15,6 +15,20 @@ def create_task(task: Task):
                 task_id = cur.fetchone()['id']
                 return TaskInDB(id=task_id, **task.model_dump())
     except Exception as e:
-        return e
+        return str(e)
+    finally:
+        conn.close()
+        
+def get_all_task():
+    try:
+        with psycopg2.connect(**cfg) as conn:
+            with conn.cursor(cursor_factory=DictCursor) as cur:
+                select_script = "SELECT title,description,completed FROM task"
+                cur.execute(select_script)
+                result = cur.fetchall()
+                plain = [dict(r) for r in result]
+                return plain
+    except Exception as e:
+        return str(e)
     finally:
         conn.close()

@@ -1,5 +1,5 @@
 from fastapi import APIRouter,HTTPException
-
+from typing import List
 from models.task_model import Task,TaskInDB
 from controller import task_controller
 
@@ -11,3 +11,10 @@ def create_task(task: Task):
         return task_controller.create_task(task)
     except Exception as e:
         raise HTTPException(status_code=500,detail=str(e))
+    
+@router.get("/get-all-task", response_model=List[Task])
+def get_all_task():
+    try:
+        return  task_controller.get_all_task()
+    except Exception as e:
+        raise  HTTPException(detail=str(e))
