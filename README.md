@@ -28,7 +28,8 @@ uvicorn main:app --reload
 Features include task creation, viewing, marking as complete, and deletion. The application supports environment-based configuration, uses SQLite by default, and is structured for easy extension into a full-featured app.
 
 # API 
-# create task - /task/create_task
+create task - /task/create_task
+-------------------------------
 Request body: 
 {
   "title": "string",
@@ -36,9 +37,11 @@ Request body:
   "completed": false
 }
 
-# get all task - /task/get-all-task
+get all task - /task/get-all-task
+---------------------------------
 
-# signup - /auth/register
+signup - /auth/register
+-----------------------
 Request body: 
 {
   "email": "ur@example.com",
@@ -46,7 +49,8 @@ Request body:
   "confirm_password": "string"  -- optional
 }
 
-# login - /auth/login
+login - /auth/login
+-------------------
 Request body: 
 {
   "email": "ur@example.com",
