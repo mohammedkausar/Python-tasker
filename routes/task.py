@@ -17,4 +17,4 @@ def get_all_task():
     try:
         return  task_controller.get_all_task()
     except Exception as e:
-        raise  HTTPException(status_code=404,detail=str(e))
+        raise  HTTPException(detail=str(e))
